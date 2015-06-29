@@ -10,16 +10,18 @@ location = URI.escape(location)
 
 # Send an HTTP request to Google
 json_data = open("http://maps.googleapis.com/maps/api/geocode/json?address=#{location}&sensor=false").read
+# puts json_data
 
 # Parse the response string into a Ruby data structure
 # (You will need to figure out what kind of structure it is)
 data = JSON.parse(json_data)
+# puts data
 
 # 1. TO DO:
 # Replace the following 0's with expressions
 # that will extract the latitude and longitude
-latitude = 0
-longitude = 0
+latitude = data["results"][0]["geometry"]["location"]["lat"]
+longitude = data["results"][0]["geometry"]["location"]["lng"]
 
 # Output latitude and longitude to the screen
 puts "Latitude: #{latitude}"
